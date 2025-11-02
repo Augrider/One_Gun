@@ -43,6 +43,9 @@ namespace Player
             PlayerActions.Primary.performed += OnPrimaryPerformed;
             PlayerActions.Primary.canceled += OnPrimaryReleased;
 
+            PlayerActions.Secondary.performed += OnSecondaryPerformed;
+            PlayerActions.Secondary.canceled += OnSecondaryReleased;
+
             PlayerActions.Reload.performed += OnReloadPerformed;
 
             PlayerActions.Enable();
@@ -59,10 +62,14 @@ namespace Player
             PlayerActions.Primary.performed -= OnPrimaryPerformed;
             PlayerActions.Primary.canceled -= OnPrimaryReleased;
 
+            PlayerActions.Secondary.performed -= OnSecondaryPerformed;
+            PlayerActions.Secondary.canceled -= OnSecondaryReleased;
+
             PlayerActions.Reload.performed -= OnReloadPerformed;
 
             PlayerActions.Disable();
         }
+
 
 
         private void OnPrimaryPerformed(InputAction.CallbackContext context)
@@ -73,6 +80,17 @@ namespace Player
         private void OnPrimaryReleased(InputAction.CallbackContext context)
         {
             _weaponInput.SetPrimaryReleased();
+        }
+
+
+        private void OnSecondaryPerformed(InputAction.CallbackContext context)
+        {
+            _weaponInput.SetSecondaryPressed();
+        }
+
+        private void OnSecondaryReleased(InputAction.CallbackContext context)
+        {
+            _weaponInput.SetSecondaryReleased();
         }
 
 

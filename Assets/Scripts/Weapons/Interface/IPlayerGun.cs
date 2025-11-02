@@ -8,7 +8,7 @@ namespace Weapons
         //Events for shooting actual bullets, reloading
         int MagAmmo { get; }
         float Recoil { get; }
-        float ADSMultiplier { get; }
+
 
         void Initialize(IMainObject player);
 
@@ -22,10 +22,6 @@ namespace Weapons
         /// Notify gun that player wants to stop shooting
         /// </summary>
         void StopShooting();
-
-        //TODO: If needed - remove from gun and place into separate component
-        void SetAiming();
-        void ReleaseAiming();
 
         /// <summary>
         /// Attempt to start reloading process

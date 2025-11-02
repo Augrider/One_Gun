@@ -15,18 +15,19 @@ namespace Weapons
         // private bool reloading = false;
 
         private IPlayerWeaponStatsProvider WeaponStatsProvider { get; set; }
+        private IADSProvider ADSProvider { get; set; }
         private WeaponStats WeaponStats => WeaponStatsProvider.WeaponStats;
 
         private float FireCooldown => 1 / WeaponStats.RateOfFire;
 
-        public int MagAmmo { get; private set; } = 50000;
-        public float Recoil { get; private set; } = 0;
-        public float ADSMultiplier { get; private set; }
+        public int MagAmmo { get; private set; }
+        public float Recoil { get; private set; }
 
 
         public void Initialize(IMainObject player)
         {
             WeaponStatsProvider = player.GetComponent<IPlayerWeaponStatsProvider>();
+            ADSProvider = player.GetComponent<IADSProvider>();
 
             MagAmmo = WeaponStats.MagazineSize;
 
@@ -45,7 +46,7 @@ namespace Weapons
 
         void Update()
         {
-            Recoil = Mathf.Clamp(Recoil - WeaponStats.RecoilControl * Time.deltaTime, 0, 1);
+            Recoil = Mathf.Clamp(Recoil - WeaponStats.RecoilControl * (1 + ADSProvider.ADSMultiplier) * Time.deltaTime, 0, 1);
         }
 
 
@@ -147,10 +148,10 @@ namespace Weapons
 
         private Quaternion GetDeviation(float recoil)
         {
-            float angleOffset = Random.Range(0, WeaponStats.BaseDeviation * recoil);
+            float angleOffset = Random.Range(0, WeaponStats.BaseDeviation * (recoil - ADSProvider.ADSMultiplier * 0.2f));
             float verticalOffset = Random.Range(-45, 45);
 
-            var deviation = Quaternion.Euler(0, 0, verticalOffset) * Quaternion.Euler(0, angleOffset, 0);
+            var deviation = Quaternion.Euler(0, 0, verticalOffset) * Quaternion.Euler(-angleOffset, 0, 0);
             return deviation;
         }
     }

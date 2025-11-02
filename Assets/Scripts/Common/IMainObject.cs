@@ -6,6 +6,7 @@ using UnityEngine;
 public interface IMainObject
 {
     Vector3 Position { get; }
+    Transform Transform { get; }
 
     T GetComponent<T>();
     bool TryGetComponent<T>(out T component);

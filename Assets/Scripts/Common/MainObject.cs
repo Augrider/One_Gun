@@ -3,6 +3,8 @@ using UnityEngine;
 public class MainObject : MonoBehaviour, IMainObject
 {
     Vector3 IMainObject.Position => transform.position;
+    Transform IMainObject.Transform => transform;
+
 
     T IMainObject.GetComponent<T>()
     {
