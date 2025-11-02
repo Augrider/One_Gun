@@ -11,6 +11,6 @@ namespace Player
         void SetSecondaryPressed();
         void SetSecondaryReleased();
 
-        //Switch weapon input
+        void SetReloadPressed();
     }
 }

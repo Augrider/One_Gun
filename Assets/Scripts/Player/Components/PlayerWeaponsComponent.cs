@@ -1,41 +1,70 @@
-using Runtime.Entities.Weapons;
 using UnityEngine;
+using Weapons;
 
 namespace Player
 {
-    //TODO: Weapon Switching
-    public class PlayerWeaponsComponent : MonoBehaviour//, IPlayerWeaponsInput
+    public class PlayerWeaponsComponent : BaseComponent, IPlayerWeaponsInput
     {
-        // [SerializeField] private BaseWeapon weapon;
-        // [SerializeField] private PlayerAnimationsComponent animationsComponent;
+        /// <summary>
+        /// All guns in game, added to player object
+        /// </summary>
+        [SerializeField] private GunBase1 gun;
 
 
-        // void Awake()
-        // {
-        //     weapon.Initialize(gameObject);
-        // }
+        void Start()
+        {
+            gun.Initialize(MainObject);
+        }
+
+        void Update()
+        {
+            // if (weaponStats.)
+            //Keep shooting if auto fire and pressed
+
+            // if (Input.GetKeyDown(KeyCode.Mouse0) && (Ammo.GetValue(Current.AmmoType) <= 0))
+            // {
+            //     audioSource.PlaySound(noAmmoSound);
+            // }
+
+            // if (Input.GetKey(KeyCode.Mouse0))
+            // {
+            //     Shoot();
+            //     return;
+            // }
+
+            // if (Input.mouseScrollDelta.y != 0)
+            //     Switch(GetNext(Mathf.RoundToInt(Input.mouseScrollDelta.y)));
+        }
 
 
-        // //Handle switching weapons, weapons input, animations and effects
-        // public void SetPrimaryPressed()
-        // {
-        //     weapon.OnPrimaryPressed();
-        // }
+        public void SetPrimaryPressed()
+        {
+            if (!gun.TryShooting())
+                return;
+        }
 
-        // public void SetPrimaryReleased()
-        // {
-        //     weapon.OnPrimaryReleased();
-        // }
+        public void SetPrimaryReleased()
+        {
+            // gun.OnPrimaryReleased();
+            gun.StopShooting();
+        }
 
 
-        // public void SetSecondaryPressed()
-        // {
-        //     weapon.OnSecondaryPressed();
-        // }
+        public void SetSecondaryPressed()
+        {
+            //Aim down sights
+            gun.SetAiming();
+        }
 
-        // public void SetSecondaryReleased()
-        // {
-        //     weapon.OnSecondaryReleased();
-        // }
+        public void SetSecondaryReleased()
+        {
+            gun.ReleaseAiming();
+        }
+
+
+        public void SetReloadPressed()
+        {
+            gun.TryReload();
+        }
     }
 }

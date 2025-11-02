@@ -26,7 +26,7 @@ namespace Player
 
             _movementInput = MainObject.GetComponent<IPlayerMovementInput>();
             _cameraInput = MainObject.GetComponent<IPlayerCameraInput>();
-            // _weaponInput = MainObject.GetComponent<IPlayerWeaponsInput>();
+            _weaponInput = MainObject.GetComponent<IPlayerWeaponsInput>();
 
             _inputActions = new InputActions();
         }
@@ -40,8 +40,10 @@ namespace Player
             PlayerActions.Jump.performed += OnJumpPerformed;
             PlayerActions.Jump.canceled += OnJumpReleased;
 
-            // PlayerActions.Primary.performed += OnPrimaryPerformed;
-            // PlayerActions.Primary.canceled += OnPrimaryReleased;
+            PlayerActions.Primary.performed += OnPrimaryPerformed;
+            PlayerActions.Primary.canceled += OnPrimaryReleased;
+
+            PlayerActions.Reload.performed += OnReloadPerformed;
 
             PlayerActions.Enable();
         }
@@ -54,12 +56,13 @@ namespace Player
             PlayerActions.Jump.performed -= OnJumpPerformed;
             PlayerActions.Jump.canceled -= OnJumpReleased;
 
-            // PlayerActions.Primary.performed += OnPrimaryPerformed;
-            // PlayerActions.Primary.canceled += OnPrimaryReleased;
+            PlayerActions.Primary.performed -= OnPrimaryPerformed;
+            PlayerActions.Primary.canceled -= OnPrimaryReleased;
+
+            PlayerActions.Reload.performed -= OnReloadPerformed;
 
             PlayerActions.Disable();
         }
-
 
 
         private void OnPrimaryPerformed(InputAction.CallbackContext context)
@@ -70,6 +73,12 @@ namespace Player
         private void OnPrimaryReleased(InputAction.CallbackContext context)
         {
             _weaponInput.SetPrimaryReleased();
+        }
+
+
+        private void OnReloadPerformed(InputAction.CallbackContext context)
+        {
+            _weaponInput.SetReloadPressed();
         }
 
 
