@@ -40,9 +40,7 @@ namespace Upgrades
             Debug.Log($"Selected {upgrade}");
 
             //TODO: Add game rules and move heal there
-            playerStats.SetMaxHealth(playerStats.MaxHealth + 1);
             playerStats.SetMoveSpeedMultiplier(playerStats.MoveSpeedMultiplier + moveSpeedMultiplierAdd);
-
             player.GetComponent<PlayerHealthComponent>().Heal(playerStats.MaxHealth);
 
             upgradeSelectUI.UpgradeSelected -= OnUpgradeSelected;

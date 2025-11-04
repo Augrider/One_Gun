@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb4a5caa25f29d45894193b421e162e, type: 3}
   m_Name: Difficulty_Default
   m_EditorClassIdentifier: 
-  <MaxWaves>k__BackingField: 10
+  <MaxWaves>k__BackingField: 8
   defaultSpawnObject: {fileID: 7745838419092446261, guid: 2b1fb5dd481c4094babcbc16879d9a40, type: 3}
   secondarySpawns:
   - entityObject: {fileID: 951031570721035588, guid: 75a2a67ae5545a341a7c4eab73a51344, type: 3}
