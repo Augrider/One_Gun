@@ -81,13 +81,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2896729392740909748}
-  - component: {fileID: 7328807793197884328}
+  - component: {fileID: 8020124161178212699}
   - component: {fileID: 1892667286646755116}
   - component: {fileID: 8782226473411517144}
   - component: {fileID: 2127760330184456060}
   - component: {fileID: 2311514836368495659}
   - component: {fileID: 4935315336741051524}
   - component: {fileID: 4381116564945695419}
+  - component: {fileID: 8754574004793933174}
+  - component: {fileID: 3611766323917629980}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -111,7 +113,7 @@ Transform:
   - {fileID: 148584765670956190}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7328807793197884328
+--- !u!114 &8020124161178212699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,9 +122,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 712254517468915701}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903f382b35984e640898364c3a64955a, type: 3}
+  m_Script: {fileID: 11500000, guid: 695c152971b736b4385824974530269d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealthComponent: {fileID: 8754574004793933174}
+  playerGun: {fileID: 850815436848569127}
 --- !u!143 &1892667286646755116
 CharacterController:
   m_ObjectHideFlags: 0
@@ -218,18 +222,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b429fe19f5f0248a91a86f4c7ef2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStats:
-    ReloadSpeedMultiplier: 1
-    MagazineSize: 20
-    BulletDamage: 1
-    BulletsPerShot: 3
-    BulletSpread: 5
-    BulletSpeed: 50
-    BaseDeviation: 50
-    ShotRecoil: 0.5
-    RecoilControl: 2
-    RateOfFire: 5
-    Penetration: 1
+  defaultStats: {fileID: 11400000, guid: fe60d11658205864fb61511de57e214a, type: 2}
+  <MaxHealth>k__BackingField: 1
+  <MoveSpeedMultiplier>k__BackingField: 1
+--- !u!114 &8754574004793933174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712254517468915701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44f95beb1edaf34bac096949ce46580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immunityTime: 0.7
+--- !u!114 &3611766323917629980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712254517468915701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 4381116564945695419}
+  - {fileID: 8782226473411517144}
+  - {fileID: 8020124161178212699}
+  _identifier: 
+  _useSceneContext: 1
+  _context: {fileID: 0}
+  _bindType: 1
 --- !u!1 &847443457721398730
 GameObject:
   m_ObjectHideFlags: 0
