@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb4a5caa25f29d45894193b421e162e, type: 3}
+  m_Name: Difficulty_Default
+  m_EditorClassIdentifier: 
+  <MaxWaves>k__BackingField: 10
+  defaultSpawnObject: {fileID: 7745838419092446261, guid: 2b1fb5dd481c4094babcbc16879d9a40, type: 3}
+  secondarySpawns:
+  - entityObject: {fileID: 951031570721035588, guid: 75a2a67ae5545a341a7c4eab73a51344, type: 3}
+    spawnCost: 2
+    minimalWave: 3
+    maxAmount: 1000
+  - entityObject: {fileID: 2894199988247537467, guid: 3298e3f0e3197fc4abfc77511dc195ff, type: 3}
+    spawnCost: 5
+    minimalWave: 5
+    maxAmount: 1000
+  startingPoints: 20
+  wavePoints: 20

@@ -1,16 +1,20 @@
+using System;
+using Game.ObjectPool;
 using UnityEngine;
 
 namespace Weapons
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class AttackProjectile : MonoBehaviour
+    public class AttackProjectile : CachedObject
     {
-        private float damage;
-        private float speed;
+        [SerializeField] private TrailRenderer trailRenderer;
 
-        private int penetration;
+        [SerializeField] private float damage;
+        [SerializeField] private float speed;
 
-        private float lifetime = 3f;        // Max lifetime before disabling
+        [SerializeField] private int penetration;
+
+        [SerializeField] private float lifetime = 3f;
 
         private Rigidbody rb;
 
@@ -18,6 +22,12 @@ namespace Weapons
         void Awake()
         {
             rb = GetComponent<Rigidbody>();
+        }
+
+        void OnDisable()
+        {
+            trailRenderer.enabled = false;
+            trailRenderer.Clear();
         }
 
 
@@ -28,17 +38,29 @@ namespace Weapons
             if (mainObject != null)
             {
                 if (mainObject.TryGetComponent<IDamageable>(out var damageable))
-                    damageable.DealDamage(damage);
+                    damageable.ApplyDamage(damage);
 
                 if (penetration-- < 0)
-                    Destroy(gameObject);
+                    Disable();
 
                 return;
             }
 
-            Destroy(gameObject);
+            Disable();
         }
 
+
+        public void Initialize()
+        {
+            trailRenderer.enabled = true;
+            trailRenderer.Clear();
+
+            rb.linearVelocity = speed * transform.forward;
+            Disable(lifetime);
+
+            trailRenderer.enabled = true;
+            trailRenderer.Clear();
+        }
 
         public void Initialize(WeaponStats weaponStats)
         {
@@ -47,8 +69,6 @@ namespace Weapons
             penetration = weaponStats.Penetration;
 
             rb.linearVelocity = speed * transform.forward;
-
-            Destroy(gameObject, lifetime);
         }
     }
 }

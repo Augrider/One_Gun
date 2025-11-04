@@ -375,9 +375,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_DeathScreen, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 8391306501166374188}
+        m_TargetAssemblyTypeName: Game.SceneNavigation.GameNavigationMethods, Controllers
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -828,6 +828,8 @@ GameObject:
   - component: {fileID: 815470580929860579}
   - component: {fileID: 8072594142515553753}
   - component: {fileID: 3929460199022277094}
+  - component: {fileID: 8471424100216425243}
+  - component: {fileID: 8391306501166374188}
   m_Layer: 5
   m_Name: UI_Death
   m_TagString: Untagged
@@ -896,6 +898,33 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8471424100216425243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799834303366841417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afdb755f42d13664e87b55209958c49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLostCanvas: {fileID: 8072594142515553753}
+  textEndMessage: {fileID: 1915023716268634400}
+  endMessageText: You survived {0} waves
+--- !u!114 &8391306501166374188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799834303366841417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d225a568f994b2449859086bfacd266e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7806644679995476363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,9 +1047,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_DeathScreen, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 8391306501166374188}
+        m_TargetAssemblyTypeName: Game.SceneNavigation.GameNavigationMethods, Controllers
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

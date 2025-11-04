@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4964502884106623317}
   - component: {fileID: 5127865147475633313}
   - component: {fileID: 6048617777618657621}
+  - component: {fileID: 8012365492236008161}
+  - component: {fileID: 6000858219946346131}
   m_Layer: 5
   m_Name: UI_Victory
   m_TagString: Untagged
@@ -85,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6048617777618657621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +105,31 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8012365492236008161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43428508912370148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c4a6e728d1f4f48a381e37ca7b0bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryCanvas: {fileID: 4964502884106623317}
+--- !u!114 &6000858219946346131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43428508912370148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d225a568f994b2449859086bfacd266e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2403251361027781041
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,9 +655,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_DeathScreen, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 6000858219946346131}
+        m_TargetAssemblyTypeName: Game.SceneNavigation.GameNavigationMethods, Controllers
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1176,9 +1203,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_DeathScreen, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 6000858219946346131}
+        m_TargetAssemblyTypeName: Game.SceneNavigation.GameNavigationMethods, Controllers
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,16 +1,32 @@
+using TMPro;
 using UnityEngine;
+using WaveSpawn;
+using Zenject;
 
-public class UI_GameState : MonoBehaviour
+namespace UI.HUD
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class UI_GameState : MonoBehaviour
     {
-        
-    }
+        [Inject] private IWavesState wavesState;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] private TextMeshProUGUI textWave;
+        [SerializeField] private TextMeshProUGUI textEnemiesLeft;
+
+
+        void Update()
+        {
+            Refresh();
+        }
+
+
+
+        private void Refresh()
+        {
+            if (wavesState == null)
+                return;
+
+            textWave.SetText($"{wavesState.Wave}");
+            textEnemiesLeft.SetText($"{wavesState.EnemiesLeft}");
+        }
     }
 }

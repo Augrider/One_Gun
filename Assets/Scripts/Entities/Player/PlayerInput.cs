@@ -78,6 +78,18 @@ namespace Player
         public void ToggleActive(bool value)
         {
             enabled = value;
+
+            //Reset input
+            if (!value)
+            {
+                _weaponInput.SetPrimaryReleased();
+                _weaponInput.SetSecondaryReleased();
+
+                _cameraInput.SetCameraInput(Vector2.zero);
+                _movementInput.SetMovementInput(Vector2.zero);
+
+                _movementInput.SetJumpReleased();
+            }
         }
 
 

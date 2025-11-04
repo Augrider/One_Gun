@@ -17,12 +17,12 @@ MonoBehaviour:
   weaponStats:
     reloadSpeedMultiplier: 1
     magazineSize: 30
-    bulletDamage: 3
+    bulletDamage: 5
     bulletsPerShot: 1
     bulletSpread: 3
     bulletSpeed: 50
-    baseDeviation: 20
-    shotRecoil: 1
-    recoilControl: 2
+    baseDeviation: 10
+    shotRecoil: 0.3
+    recoilControl: 1
     rateOfFire: 3
     penetration: 0

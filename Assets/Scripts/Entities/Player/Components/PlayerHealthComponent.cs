@@ -37,7 +37,7 @@ namespace Player
         }
 
 
-        public void DealDamage(float damage)
+        public void ApplyDamage(float damage)
         {
             if (immune)
                 return;

@@ -121,7 +121,7 @@ namespace Weapons
                 var deviation = GetDeviation(Recoil);
 
                 var projectiles = projectileLauncher.Shoot(weaponStats.BulletsPerShot, weaponStats.BulletSpread, deviation);
-                visuals.TriggerShot();
+                visuals.TriggerShot(FireCooldown);
 
                 foreach (var projectile in projectiles)
                     projectile.Initialize(weaponStats);
@@ -137,9 +137,9 @@ namespace Weapons
 
         private IEnumerator ReloadRoutine(WeaponStats weaponStats)
         {
-            visuals.TriggerReload();
+            visuals.TriggerReload(weaponStats.ReloadSpeedMultiplier);
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(visuals.ReloadAnimationDuration * weaponStats.ReloadSpeedMultiplier);
             AmmoInMag = WeaponStats.MagazineSize;
 
             current = null;

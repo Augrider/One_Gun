@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 using WaveSpawn;
 using Zenject;
@@ -9,13 +10,24 @@ namespace Upgrades
         [Inject] private IUpgradeSelectUI upgradeSelectUI;
         [Inject] private IMainObject player;
 
-        [SerializeField] private WaveSpawnController waveSpawnController;
+        [Inject] private IPlayerStateProvider playerState;
+        [Inject] private IPlayerStatsProvider playerStats;
 
+        [SerializeField] private WaveSpawnController waveSpawnController;
+        [SerializeField] private float waveSpawnDelay;
+        [SerializeField] private float moveSpeedMultiplierAdd;
+
+
+        void Start()
+        {
+            StartUpgradeSelection();
+        }
 
         public void StartUpgradeSelection()
         {
             upgradeSelectUI.UpgradeSelected += OnUpgradeSelected;
-            upgradeSelectUI.StartUpgradeSelection();
+
+            Invoke(nameof(UIStartSelection), waveSpawnDelay);
         }
 
 
@@ -25,7 +37,20 @@ namespace Upgrades
             if (upgrade != null)
                 upgrade.Apply(player);
 
-            waveSpawnController.SpawnNewWave();
+            Debug.Log($"Selected {upgrade}");
+
+            //TODO: Add game rules and move heal there
+            playerStats.SetMaxHealth(playerStats.MaxHealth + 1);
+            playerStats.SetMoveSpeedMultiplier(playerStats.MoveSpeedMultiplier + moveSpeedMultiplierAdd);
+
+            player.GetComponent<PlayerHealthComponent>().Heal(playerStats.MaxHealth);
+
+            upgradeSelectUI.UpgradeSelected -= OnUpgradeSelected;
+
+            Invoke(nameof(SpawnNewWave), waveSpawnDelay);
         }
+
+        private void UIStartSelection() => upgradeSelectUI.StartUpgradeSelection();
+        private void SpawnNewWave() => waveSpawnController.SpawnNewWave();
     }
 }

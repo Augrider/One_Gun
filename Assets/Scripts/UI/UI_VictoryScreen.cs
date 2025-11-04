@@ -1,16 +1,26 @@
+using PauseControl;
 using UnityEngine;
+using WaveSpawn;
+using Zenject;
 
-public class UI_VictoryScreen : MonoBehaviour
+namespace UI.Victory
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class UI_VictoryScreen : MonoBehaviour, IVictoryUI
     {
-        
-    }
+        [Inject] private PauseController pauseController;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] private Canvas victoryCanvas;
+
+
+        void Start()
+        {
+            victoryCanvas.enabled = false;
+        }
+
+        public void TriggerVictory()
+        {
+            victoryCanvas.enabled = true;
+            pauseController.TogglePause(true);
+        }
     }
 }
