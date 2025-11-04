@@ -55,7 +55,7 @@ namespace Weapons
             trailRenderer.enabled = true;
             trailRenderer.Clear();
 
-            rb.linearVelocity = speed * transform.forward;
+            rb.velocity = speed * transform.forward;
             Disable(lifetime);
 
             trailRenderer.enabled = true;
@@ -68,7 +68,7 @@ namespace Weapons
             speed = weaponStats.BulletSpeed;
             penetration = weaponStats.Penetration;
 
-            rb.linearVelocity = speed * transform.forward;
+            rb.velocity = speed * transform.forward;
         }
     }
 }
